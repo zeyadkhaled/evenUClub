@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bilkentazure.evenuclub.fragments.AddEventFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_width="150dp"
+                android:layout_row="0">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Name:"
+                    android:textSize="20dp"/>
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Date:"
+                    android:textSize="20dp"/>
+
+                <TextView
+                    android:id="@+id/ge"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="GE points:"
+                    android:textSize="20dp"/>
+
+                <TextView
+                    android:id="@+id/place"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Location:"
+                    android:textSize="20dp"/>
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Description:"
+                    android:textSize="20dp"/>
+
+                <TextView
+                    android:id="@+id/tags"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tags:"
+                    android:textSize="20dp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:layout_width="250dp"
+                android:layout_row="0"
+                android:layout_column="2">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/edt_eventName"
+                    android:layout_marginTop="20dp"
+                    android:hint="Event Name"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:selectAllOnFocus="true"
+                    android:textSize="16sp"
+                    app:met_floatingLabel="highlight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <requestFocus/>
+                </com.rengwuxian.materialedittext.MaterialEditText>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/edt_eventDate"
+                    android:layout_marginTop="10dp"
+                    android:hint="Event Date"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:selectAllOnFocus="true"
+                    android:textSize="16sp"
+                    app:met_floatingLabel="highlight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <requestFocus/>
+                </com.rengwuxian.materialedittext.MaterialEditText>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/edt_gePoints"
+                    android:layout_marginTop="10dp"
+                    android:hint="GE points"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:selectAllOnFocus="true"
+                    android:textSize="16sp"
+                    app:met_floatingLabel="highlight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <requestFocus/>
+                </com.rengwuxian.materialedittext.MaterialEditText>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/edt_location"
+                    android:layout_marginTop="10dp"
+                    android:hint="Location of event"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:selectAllOnFocus="true"
+                    android:textSize="16sp"
+                    app:met_floatingLabel="highlight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <requestFocus/>
+                </com.rengwuxian.materialedittext.MaterialEditText>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/edt_description"
+                    android:layout_marginTop="10dp"
+                    android:hint="Information about the event"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:selectAllOnFocus="true"
+                    android:textSize="16sp"
+                    app:met_floatingLabel="highlight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <requestFocus/>
+                </com.rengwuxian.materialedittext.MaterialEditText>
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/edt_tags"
+                    android:layout_marginTop="10dp"
+                    android:hint="eg. CS, PSY, Entertainment"
+                    android:ems="10"
+                    android:inputType="textFilter"
+                    android:selectAllOnFocus="true"
+                    android:textSize="16sp"
+                    app:met_floatingLabel="highlight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <requestFocus/>
+                </com.rengwuxian.materialedittext.MaterialEditText>
+
+
+            </LinearLayout>
+
+        </GridLayout>
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gridLayout"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="ADD"/>
+
+    </RelativeLayout>
+
+</ScrollView>

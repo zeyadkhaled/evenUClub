@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">evenUClub</string>
+
+
+    <string name="hint_password">Password</string>
+    <string name="login_to_your_account">Login to your account</string>
+    <string name="login">LOGIN</string>
+    <string name="hint_email">Email</string>
+    <string name="create_account">CREATE ACCOUNT</string>
+    <string name="create_new_account">Account Application using google forms</string>
+    <string name="hint_name">Name</string>
+    <string name="send">SEND</string>
+    <string name="enter_your_email_or_school_id">Enter organization's email</string>
+    <string name="hint_email_or_school_id">Email</string>
+    <string name="hint_school_id">School ID</string>
+    <string name="club_name">club_name</string>
+    <string name="my_events">my_events</string>
+</resources>
