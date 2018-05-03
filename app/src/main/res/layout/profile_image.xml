@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TabWidget
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimaryDark">
+
+        <Button
+            android:id="@+id/changeImage"
+            android:layout_marginLeft="20dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Change Image"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:background="#545454"/>
+
+    </TabWidget>
+
+    <ImageView
+        android:id="@+id/theImage"
+        android:src="@drawable/about_icon_facebook"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>

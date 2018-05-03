@@ -8,6 +8,7 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -35,12 +36,16 @@ dependencies {
     //Firebase
     implementation 'com.google.firebase:firebase-auth:15.0.0'
     implementation 'com.google.firebase:firebase-firestore:15.0.0'
+    implementation 'com.firebaseui:firebase-ui-firestore:3.3.1'
 
     //About page
     implementation 'com.github.medyo:android-about-page:1.2.4'
 
 //    //profile page image view
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    //Date Time picker
+    implementation 'com.github.Kunzisoft:Android-SwitchDateTimePicker:1.9'
 }
 
 apply plugin: 'com.google.gms.google-services'

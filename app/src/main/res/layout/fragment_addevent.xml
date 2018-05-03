@@ -31,14 +31,6 @@
                     android:text="Name:"
                     android:textSize="20dp" />
 
-                <TextView
-                    android:id="@+id/date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="40dp"
-                    android:text="Date:"
-                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/from"
@@ -118,21 +110,47 @@
                     <requestFocus/>
                 </com.rengwuxian.materialedittext.MaterialEditText>
 
-
-                <DatePicker
-                    android:layout_width="wrap_content"
-                    android:layout_height="57dp"></DatePicker>
-
-                <TimePicker
-                    android:id="@+id/edt_from"
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="64dp" />
+                    android:layout_height="70dp">
 
+                    <TextView
+                        android:id="@+id/fromTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MMM.DD.YYYY  HH:MM"
+                        android:textSize="15dp"
+                        android:layout_marginTop="27dp"
+                        android:layout_marginBottom="13dp"/>
+                    <Button
+                        android:id="@+id/selectFrom"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="30dp"/>
 
-                <TimePicker
-                    android:id="@+id/edt_to"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="81dp" />
+                    android:layout_height="60dp">
+
+                    <TextView
+                        android:id="@+id/toTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MMM.DD.YYYY  HH:MM "
+                        android:textSize="15dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginBottom="13dp"/>
+                    <Button
+                        android:id="@+id/selectTo"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="27dp"/>
+
+                </LinearLayout>
 
                 <com.rengwuxian.materialedittext.MaterialEditText
                     android:id="@+id/edt_gePoints"
