@@ -28,6 +28,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.kunzisoft.switchdatetime.SwitchDateTimeDialogFragment;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -101,16 +102,21 @@ public class EditEvent extends AppCompatActivity {
         selectFrom =findViewById(R.id.edit_event_selectFrom);
         selectTo = findViewById(R.id.edit_event_selectTo);
 
-        //Giving them previous values
+        //Giving EditTexts previously entered values
         editEventName.setText(event.getName());
         editGePoints.setText(event.getGe_point() +"");
         editLocation.setText(event.getLocation());
         editDescription.setText(event.getDescription());
         editTags.setText("EMPTY FOR NOW");
 
-        //Needs to be formatted
-        fromText.setText(event.getFrom() + "");
-        toText.setText(event.getTo() + "");
+        //Display formatted date
+        DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy HH:mm");
+
+		String from = dateFormat.format(event.getFrom());
+        fromText.setText(from);
+
+        String to = dateFormat.format(event.getTo());
+        toText.setText(to);
 
 
 //        // Construct SwitchDateTimePicker for the from date
