@@ -28,8 +28,9 @@
         <activity
             android:name=".ForgotPassActivity"
             android:parentActivityName=".LoginActivity" />
-        <activity android:name=".EventView"></activity>
-        <activity android:name=".GenerateQR"></activity>
+        <activity android:name=".EventView" />
+        <activity android:name=".GenerateQR" />
+        <activity android:name=".EditEvent"></activity>
     </application>
 
 </manifest>

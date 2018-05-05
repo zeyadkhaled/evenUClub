@@ -64,7 +64,7 @@ public class EventView extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         mToolbar = findViewById(R.id.event_view_toolbar);
         setSupportActionBar(mToolbar);
-//        getSupportActionBar().setTitle(event.getName());
+      getSupportActionBar().setTitle(event.getName());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         txtTitle = findViewById(R.id.event_view_txt_title);
@@ -74,14 +74,14 @@ public class EventView extends AppCompatActivity {
         txtGE = findViewById(R.id.event_view_txt_ge);
         txtClub = findViewById(R.id.event_view_txt_club);
 
-//        txtTitle.setText(event.getName());
-//        txtInfo.setText(event.getDescription());
-//        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy\n'Time: ' H:m");
-//        String date = dateFormat.format(event.getFrom());
-//        txtDate.setText(date);
-//        txtLocation.setText(event.getLocation());
-//        txtGE.setText(event.getGe_point() + " Points");
-//        txtClub.setText(event.getClub_id());
+        txtTitle.setText(event.getName());
+        txtInfo.setText(event.getDescription());
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy\n'Time: ' H:m");
+        String date = dateFormat.format(event.getFrom());
+        txtDate.setText(date);
+        txtLocation.setText(event.getLocation());
+        txtGE.setText(event.getGe_point() + " Points");
+        txtClub.setText(event.getClub_id());
 
 
         edit = findViewById(R.id.edit_event);
@@ -89,14 +89,9 @@ public class EventView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //Process going here and save to database
-
-                //Return back to home activity
-                Intent returnIntent = new Intent();
-                setResult(RESULT_OK, returnIntent);
-                Toast.makeText(getApplicationContext(), "Going to event is successful!",
-                        Toast.LENGTH_LONG).show();
-                finish();
+                Intent intent = new Intent(getApplicationContext() , EditEvent.class);
+                intent.putExtra("event", event);
+                startActivity(intent);
             }
         });
 
@@ -104,8 +99,7 @@ public class EventView extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
+                //Call to DB to remove document
             }
         });
 
@@ -113,7 +107,7 @@ public class EventView extends AppCompatActivity {
         generateList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                generateList(event.getId());
+                generateList(event.getId());
             }
         });
 

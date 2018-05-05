@@ -72,13 +72,7 @@ public class AddEventFragment extends Fragment {
 	private Button selectFrom;
 	private Button selectTo;
 
-	/**
-	 * Implement Date/Time picker and process them into date objects
-	 *
-	 * Make needed checks before processing add event ex: all fields are filled and valid.
-	 *
-	 * Fix the layout mainly displaying the date and time pickers
-	 */
+
 
 
 	@Override

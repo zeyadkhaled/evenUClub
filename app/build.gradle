@@ -34,6 +34,7 @@ dependencies {
      * EXTERNAL LIBRARIES
      */
     //Firebase
+    //noinspection GradleCompatible
     implementation 'com.google.firebase:firebase-auth:15.0.0'
     implementation 'com.google.firebase:firebase-firestore:15.0.0'
     implementation 'com.firebaseui:firebase-ui-firestore:3.3.1'
@@ -50,6 +51,7 @@ dependencies {
     //QR Generating
     implementation 'com.google.zxing:core:3.3.0'
 }
+
 
 
 apply plugin: 'com.google.gms.google-services'
