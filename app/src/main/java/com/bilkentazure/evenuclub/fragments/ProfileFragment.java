@@ -32,11 +32,7 @@ public class ProfileFragment extends Fragment {
 	private TextView myEvents;
 
 	private Bitmap imageBmap;
-
-
-	public ProfileFragment() {
-		// Required empty public constructor
-	}
+	
 
 
 	@Override
