@@ -1,6 +1,7 @@
 package com.bilkentazure.evenuclub.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -17,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bilkentazure.evenuclub.EventView;
+import com.bilkentazure.evenuclub.GenerateQR;
 import com.bilkentazure.evenuclub.R;
 import com.bilkentazure.evenuclub.models.Event;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -107,9 +110,34 @@ public class HomeFragment extends Fragment {
 				holder.setLocation(location);
 				holder.setDate(from);
 
-				if( !( event.getClub_id().equals("BIH") )){
+
+
+                //Test Viewing events
+                holder.btnView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(getContext() , EventView.class);
+                        startActivity(intent);
+                    }
+                });
+
+
+                if( !( event.getClub_id().equals("BIH") )){
 					holder.hide();
 				}
+
+
+				//Test Viewing events
+				holder.btnView.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+
+						Intent intent = new Intent(getContext() , EventView.class);
+						startActivity(intent);
+					}
+				});
+
 			}
 
 			@Override
@@ -118,6 +146,8 @@ public class HomeFragment extends Fragment {
 				// layout called R.layout.message for each item
 				View view = LayoutInflater.from(group.getContext())
 						.inflate(R.layout.event_list_item, group, false);
+
+
 
 				return new EventHolder(view);
 			}
@@ -141,6 +171,7 @@ public class HomeFragment extends Fragment {
 		private TextView txtLocation;
 		public RelativeLayout mainRlt;
 		private ImageView imgEvent;
+		public FloatingActionButton btnView;
 
 
 		public EventHolder (View itemView) {
@@ -153,6 +184,7 @@ public class HomeFragment extends Fragment {
 			txtLocation = mView.findViewById(R.id.event_txt_location);
 			mainRlt = mView.findViewById(R.id.event_list_rlt);
 			imgEvent = mView.findViewById(R.id.event_img_event);
+			btnView = mView.findViewById(R.id.click_event);
 		}
 
 		public void setTitle(String title) {

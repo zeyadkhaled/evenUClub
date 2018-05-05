@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created by Zeyad Khaled on 1/5/18-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bilkentazure.evenuclub.EventView">
+
+
+    <include
+        android:id="@+id/event_view_toolbar"
+        layout="@layout/app_bar_layout"/>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/event_view_view_rlt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/event_view_toolbar"
+        >
+
+
+
+        <RelativeLayout
+            android:id="@+id/event_view_header_rlt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:id="@+id/event_view_img_event"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                app:srcCompat="@drawable/bg_main_screen" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/event_view_info_rlt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/event_view_view_rlt"
+        >
+
+        <TextView
+            android:id="@+id/event_view_txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto"
+            android:maxLines="2"
+            android:text="Artificial Intelligence"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/event_view_txt_club"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="55dp"
+            android:fontFamily="@font/roboto"
+            android:maxLines="1"
+            android:text="By CS Club"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/event_view_txt_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/event_view_txt_title"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/roboto"
+            android:maxLines="4"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam massa quam.Lor ipsum... dolor sit amet, consectetur adipiscing elit. Nam massa quam.Lorem ipsum dolor sit ametconsectetur adipiscing elit. Nam massa quam."
+            android:textAlignment="center"
+            android:textColor="#8C000000"
+            android:textSize="15sp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="false"
+            android:layout_below="@+id/event_view_txt_info"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="false"
+            android:layout_marginTop="25dp">
+
+            <RelativeLayout
+                android:id="@+id/event_view_rlt_ge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true">
+
+                <TextView
+                    android:id="@+id/event_view_txt_ge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_toRightOf="@id/imageView"
+                    android:fontFamily="@font/roboto"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:minLines="1"
+                    android:text="20 GE Points"
+                    android:textColor="#000000" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="false"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="25dp"
+                    app:srcCompat="@drawable/ic_ge" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/event_view_rlt_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="140dp">
+
+                <TextView
+                    android:id="@+id/event_view_txt_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_toRightOf="@id/imageView2"
+                    android:fontFamily="@font/roboto"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:minLines="2"
+                    android:text="28.04.2018\n17:40"
+                    android:textColor="#000000" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="false"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="25dp"
+                    app:srcCompat="@drawable/ic_date_range" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/event_view_rlt_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/event_view_rlt_date"
+                android:layout_marginStart="35dp"
+                android:layout_toEndOf="@+id/event_view_rlt_date">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerHorizontal="false"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="25dp"
+                    app:srcCompat="@drawable/ic_location_on" />
+
+                <TextView
+                    android:id="@+id/event_view_txt_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_toRightOf="@id/imageView3"
+                    android:fontFamily="@font/roboto"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:minLines="1"
+                    android:text="FFB-205"
+                    android:textColor="#000000" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/edit_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/event_view_info_rlt"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/bg_round_button"
+        android:fontFamily="@font/roboto_medium"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="Edit"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/delete_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/generate_list_event"
+        android:layout_marginStart="42dp"
+        android:layout_toEndOf="@+id/edit_event"
+        android:background="@drawable/bg_round_button"
+        android:backgroundTint="@color/about_youtube_color"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Delete"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/generate_list_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/delete_event"
+        android:layout_alignStart="@+id/edit_event"
+        android:layout_below="@+id/edit_event"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bg_round_button"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Generate List"
+        android:textColor="@android:color/white"/>
+
+    <Button
+        android:id="@+id/generate_qr_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/generate_list_event"
+        android:layout_alignStart="@+id/generate_list_event"
+        android:layout_below="@+id/generate_list_event"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_round_button"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Generate QR"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>
+
+
+    <!--<Button-->
+<!--android:id="@+id/event_view_edit"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_alignParentLeft="true"-->
+<!--android:layout_alignParentStart="true"-->
+<!--android:layout_below="@+id/event_view_info_rlt"-->
+<!--android:layout_marginLeft="82dp"-->
+<!--android:layout_marginStart="82dp"-->
+<!--android:layout_marginTop="87dp"-->
+<!--android:background="@drawable/bg_round_button"-->
+<!--android:paddingLeft="30dp"-->
+<!--android:paddingRight="30dp"-->
+<!--android:text="Edit"-->
+<!--android:textColor="@android:color/white" />-->
+
+<!--<Button-->
+<!--android:id="@+id/event_view_delete"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+
+<!--android:layout_alignBaseline="@+id/event_view_edit"-->
+<!--android:layout_alignBottom="@+id/event_view_edit"-->
+<!--android:layout_marginLeft="20dp"-->
+<!--android:layout_marginStart="20dp"-->
+<!--android:layout_toEndOf="@+id/event_view_edit"-->
+<!--android:layout_toRightOf="@+id/event_view_edit"-->
+<!--android:background="@drawable/bg_round_button"-->
+<!--android:backgroundTint="@color/about_youtube_color"-->
+<!--android:paddingLeft="30dp"-->
+<!--android:paddingRight="30dp"-->
+<!--android:text="Delete"-->
+<!--android:textColor="@android:color/white" />-->
+
+<!--<Button-->
+<!--android:id="@+id/event_view_generate_list"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+
+<!--android:layout_alignLeft="@+id/event_view_edit"-->
+<!--android:layout_alignParentBottom="true"-->
+<!--android:layout_alignStart="@+id/event_view_edit"-->
+<!--android:layout_marginBottom="53dp"-->
+<!--android:background="@drawable/bg_round_button"-->
+<!--android:paddingLeft="30dp"-->
+<!--android:paddingRight="30dp"-->
+<!--android:text="Generate List"-->
+<!--android:textColor="@android:color/white" />-->
+
+<!--<Button-->
+<!--android:id="@+id/event_view_generate_qr"-->
+<!--android:layout_width="wrap_content"-->
+<!--android:layout_height="wrap_content"-->
+<!--android:layout_alignEnd="@+id/event_view_generate_list"-->
+<!--android:layout_alignLeft="@+id/event_view_generate_list"-->
+<!--android:layout_alignParentBottom="true"-->
+<!--android:layout_alignRight="@+id/event_view_generate_list"-->
+<!--android:layout_alignStart="@+id/event_view_generate_list"-->
+<!--android:background="@drawable/bg_round_button"-->
+<!--android:text="Generate QR"-->
+<!--android:textColor="@android:color/white" />-->

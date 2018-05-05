@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.bilkentazure.evenuclub"
-        minSdkVersion 15
+        minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -46,6 +46,10 @@ dependencies {
 
     //Date Time picker
     implementation 'com.github.Kunzisoft:Android-SwitchDateTimePicker:1.9'
+
+    //QR Generating
+    implementation 'com.google.zxing:core:3.3.0'
 }
+
 
 apply plugin: 'com.google.gms.google-services'
