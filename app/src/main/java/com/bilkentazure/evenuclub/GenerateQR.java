@@ -103,7 +103,7 @@ public class GenerateQR extends AppCompatActivity {
      * @param text   is the String to be generated
      * @param width  is width
      * @param height is height
-     * @return a QR with given text
+     * @return a QR with given tex
      */
     private Bitmap generateQR(String text, int width, int height) throws WriterException, NullPointerException {
 
