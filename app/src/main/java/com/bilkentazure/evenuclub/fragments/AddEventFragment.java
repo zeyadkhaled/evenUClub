@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -102,6 +103,15 @@ public class AddEventFragment extends Fragment {
 		selectTo = view.findViewById(R.id.selectTo);
 
 
+		//Initializing the properties, btw they could be empty so before submitting run your checks *IMPORTANT*
+		name = editEventName.getText().toString();
+		ge_point = Integer.parseInt(editGePoints.getText().toString() + "1");
+		location = editLocation.getText().toString();
+		description = editDescription.getText().toString();
+		String unsplitTags = editTags.getText().toString();
+		tags = new ArrayList<>(Arrays.asList(unsplitTags.split(",")));
+
+
 		// Construct SwitchDateTimePicker for the from date
 		fromDateTimeFragment = (SwitchDateTimeDialogFragment) getFragmentManager().findFragmentByTag(TAG_DATETIME_FRAGMENT);
 		if(fromDateTimeFragment == null) {
@@ -184,14 +194,6 @@ public class AddEventFragment extends Fragment {
 		toText.setOnClickListener(to);
 
 
-		//Initializing the properties, btw they could be empty so before submitting run your checks *IMPORTANT*
-		name = editEventName.getText().toString();
-		ge_point = Integer.parseInt(editEventName.getText().toString() + "1");
-		location = editLocation.getText().toString();
-		description = editDescription.getText().toString();
-		String unsplitTags = editTags.getText().toString();
-		tags = new ArrayList<>(Arrays.asList(unsplitTags.split(",")));
-
 
 		//Before accepting this onClick process the fields to make sure they are filled.
 		addButton = view.findViewById(R.id.addButton);
@@ -208,17 +210,42 @@ public class AddEventFragment extends Fragment {
 
 	public void addEvent(){
 
-		DocumentReference ref = db.collection("_events").document();
-		String eventId = ref.getId();
+		if(TextUtils.isEmpty(editEventName.getText().toString()) ){
+			Toast.makeText(getActivity(), "name!", Toast.LENGTH_SHORT).show();
+		}
+		else if (from == null){
+			Toast.makeText(getActivity(), "From!", Toast.LENGTH_SHORT).show();
 
-		Event event = new Event(eventId,club_id,name,"image_url",description,location,from,to,ge_point,tags,tags,"","","999");
-		//db.collection("_events").document(eventId).set(event); //Disable for now cuz no need to add events to db now
+		}
+		else if (to == null){
+			Toast.makeText(getActivity(), "To!", Toast.LENGTH_SHORT).show();
 
-		Toast.makeText(getContext(), "Event has been added", //add to oncomplete listener
-				Toast.LENGTH_LONG).show();
+		}
+		else if (TextUtils.isEmpty( editGePoints.getText().toString()) ){
+			Toast.makeText(getActivity(), "GE!", Toast.LENGTH_SHORT).show();
+		}
+		else if (TextUtils.isEmpty( editLocation.getText().toString() )){
+			Toast.makeText(getActivity(), "Location!", Toast.LENGTH_SHORT).show();
+		}
+		else if (TextUtils.isEmpty(editDescription.getText().toString())){
+			Toast.makeText(getActivity(), "Description!", Toast.LENGTH_SHORT).show();
+		}
+		else if (TextUtils.isEmpty(editTags.getText().toString())){
+			Toast.makeText(getActivity(), "Tags!", Toast.LENGTH_SHORT).show();
+		}
+		else{
+			DocumentReference ref = db.collection("_events").document();
+			String eventId = ref.getId();
 
-		Intent intent = new Intent(getContext(), MainActivity.class);
-		startActivity(intent); // After adding it should be viewed in home page
+			Event event = new Event(eventId,club_id,name,"image_url",description,location,from,to,ge_point,tags,tags,"","","999");
+			//db.collection("_events").document(eventId).set(event); //Disable for now cuz no need to add events to db now
+
+			Toast.makeText(getContext(), "Event has been added", //add to oncomplete listener
+					Toast.LENGTH_LONG).show();
+
+			Intent intent = new Intent(getContext(), MainActivity.class);
+			startActivity(intent); // After adding it should be viewed in home page
+		}
 
 	}
 

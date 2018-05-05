@@ -73,21 +73,9 @@ public class HomeFragment extends Fragment {
 
 
 
-		Query query = db.collection("_events").whereEqualTo("club_id","BIH")
+		Query query = db.collection("_events")
 				.orderBy("from", Query.Direction.ASCENDING);
 
-		query.addSnapshotListener(new EventListener<QuerySnapshot>() {
-			@Override
-			public void onEvent(@Nullable QuerySnapshot value,
-								@Nullable FirebaseFirestoreException e) {
-				if (e != null) {
-					Log.w(TAG, "Listen failed.", e);
-					return;
-				}
-
-				List<Event> events = value.toObjects(Event.class);
-			}
-		});
 
 		FirestoreRecyclerOptions<Event> options = new FirestoreRecyclerOptions.Builder<Event>()
 				.setQuery(query, Event.class)
@@ -118,6 +106,10 @@ public class HomeFragment extends Fragment {
 				holder.setImage(image);
 				holder.setLocation(location);
 				holder.setDate(from);
+
+				if( !( event.getClub_id().equals("BIH") )){
+					holder.hide();
+				}
 			}
 
 			@Override

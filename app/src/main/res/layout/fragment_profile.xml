@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    android:id="@+id/profileLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,11 +9,17 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/bg_main_screen"/>
+
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
         android:layout_width="150dp"
         android:layout_height="200dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="80dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/about_icon_facebook"
         app:civ_border_color="#FF000000"
@@ -26,7 +34,7 @@
         android:layout_below="@+id/profile_image"
         android:fontFamily="sans-serif"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:text="Information"
         android:textColor="#1f48b1"
         android:textSize="20sp" />
@@ -39,7 +47,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"
         android:fontFamily="sans-serif"
-        android:text="@string/club_name"
+        android:text="Club Name"
         android:textColor="#8C000000"
         android:textSize="15sp"
         android:layout_alignParentLeft="true" />
@@ -54,7 +62,7 @@
         android:layout_marginLeft="30dp"
         android:fontFamily="sans-serif"
         android:maxLines="4"
-        android:text="@string/my_events"
+        android:text="My Events"
         android:textColor="#8C000000"
         android:textSize="15sp" />
 
