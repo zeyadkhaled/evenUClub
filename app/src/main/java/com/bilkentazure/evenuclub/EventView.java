@@ -1,13 +1,16 @@
 package com.bilkentazure.evenuclub;
 
 import android.*;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -88,7 +91,6 @@ public class EventView extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(getApplicationContext() , EditEvent.class);
                 intent.putExtra("event", event);
                 startActivity(intent);
@@ -99,7 +101,34 @@ public class EventView extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Call to DB to remove document
+                AlertDialog.Builder builder;
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    builder = new AlertDialog.Builder(EventView.this, android.R.style.Theme_Material_Dialog_Alert);
+                } else {
+                    builder = new AlertDialog.Builder(EventView.this);
+                }
+                builder.setTitle("Delete Event")
+                        .setMessage("Are you sure you want to delete this Event?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                db.collection("_events").document("zktQuYjZMMo3SabIMeIT").delete();
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(intent);
+                                Toast.makeText(EventView.this, "Event Deleted!",
+                                        Toast.LENGTH_LONG).show();
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(EventView.this, "Delete revoked!",
+                                        Toast.LENGTH_LONG).show();
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+
             }
         });
 
@@ -107,7 +136,10 @@ public class EventView extends AppCompatActivity {
         generateList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                generateList(event.getId());
+                generateList("CAg0auj0noTKi2GOtKtZ");
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+
             }
         });
 
@@ -117,6 +149,7 @@ public class EventView extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent = new Intent(EventView.this , GenerateQR.class);
+                intent.putExtra("event", event);
                 startActivity(intent);
             }
         });
