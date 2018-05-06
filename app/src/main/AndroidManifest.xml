@@ -3,6 +3,7 @@
     package="com.bilkentazure.evenuclub">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -28,9 +29,12 @@
         <activity
             android:name=".ForgotPassActivity"
             android:parentActivityName=".LoginActivity" />
-        <activity android:name=".EventView" />
-        <activity android:name=".GenerateQR" />
-        <activity android:name=".EditEvent"></activity>
+        <activity android:name=".EventView"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".GenerateQR"
+            android:parentActivityName=".EventView"/>
+        <activity android:name=".EditEvent"
+            android:parentActivityName=".EventView"></activity>
     </application>
 
 </manifest>
