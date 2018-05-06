@@ -1,5 +1,6 @@
 package com.bilkentazure.evenuclub;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -11,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.bilkentazure.evenuclub.models.Event;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -36,9 +39,10 @@ public class GenerateQR extends AppCompatActivity {
     private ImageView viewQR;
     private FirebaseFirestore db;
     private String security_check;
-    final private String eventID = "BFnxKhJMM5wqo2dMmF2l"; // Shall be retrieved from calling intent in evenU club class
+    private String eventID = "";
     private Bitmap generatedQR;
     private CountDownTimer generationTimer;
+    private Event event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,8 @@ public class GenerateQR extends AppCompatActivity {
         getSupportActionBar().setTitle("Generate QR");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         viewQR = findViewById(R.id.qr_view);
+        event = (Event)getIntent().getSerializableExtra("event");
+        eventID = event.getId();
 
         doActions();
         //Start a timer with given interval and delay
@@ -90,11 +96,14 @@ public class GenerateQR extends AppCompatActivity {
     }
 
     /**
-     * Stops the timer when activity is closed
+     * Stops the timer when activity is closed and reopen EventView activity and pass it the event object
      */
     public void onPause() {
         super.onPause();
         generationTimer.cancel();
+        Intent intent = new Intent(GenerateQR.this , EventView.class);
+        intent.putExtra("event", event);
+        startActivity(intent);
     }
 
     /**
@@ -141,7 +150,7 @@ public class GenerateQR extends AppCompatActivity {
      * Update security_check field in database
      */
     public void updateSecurityCheck() {
-        security_check = (int) (Math.random() * 1000000) + "";
+        security_check = (int) (Math.random() * 10000000) + "";
         db.collection("_events").document(eventID).update("security_check", security_check);
     }
 

@@ -236,6 +236,16 @@ public class EditEvent extends AppCompatActivity {
 
     }
 
+    /**
+     * Return the event object to EventView Activity by calling an intent
+     */
+    public void onPause() {
+        super.onPause();
+        Intent intent = new Intent(EditEvent.this , EventView.class);
+        intent.putExtra("event", event);
+        startActivity(intent);
+    }
+
 
 //    public class ToOnClickListener implements View.OnClickListener{
 //        @Override

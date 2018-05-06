@@ -112,17 +112,6 @@ public class HomeFragment extends Fragment {
 
 
 
-                //Test Viewing events
-                holder.btnView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        Intent intent = new Intent(getContext() , EventView.class);
-                        startActivity(intent);
-                    }
-                });
-
-
                 if( !( event.getClub_id().equals("BIH") )){
 					holder.hide();
 				}
