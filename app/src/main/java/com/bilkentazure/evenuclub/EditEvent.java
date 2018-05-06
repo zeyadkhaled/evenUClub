@@ -214,25 +214,25 @@ public class EditEvent extends AppCompatActivity {
     }
 
     public void editEvent(){
+
         //Initializing the properties, btw they could be empty so before submitting run your checks *IMPORTANT*
-        name = editEventName.getText().toString();
-        ge_point = Integer.parseInt(editEventName.getText().toString());
-        location = editLocation.getText().toString();
-        description = editDescription.getText().toString();
-        String unsplitTags = editTags.getText().toString();
-        tags = new ArrayList<>(Arrays.asList(unsplitTags.split(",")));
+//        name = editEventName.getText().toString();
+//        ge_point = Integer.parseInt(editEventName.getText().toString());
+//        location = editLocation.getText().toString();
+//        description = editDescription.getText().toString();
+//        String unsplitTags = editTags.getText().toString();
+//        tags = new ArrayList<>(Arrays.asList(unsplitTags.split(",")));
+//
+//        DocumentReference ref = db.collection("_events").document();
+//        String eventId = ref.getId();
 
-        DocumentReference ref = db.collection("_events").document();
-        String eventId = ref.getId();
-
-        Event event = new Event(eventId,club_id,name,"image_url",description,location,from,to,ge_point,tags,tags,"","","999");
+//        Event event = new Event(eventId,club_id,name,"image_url",description,location,from,to,ge_point,tags,tags,"","","999");
         //db.collection("_events").document(eventId).set(event); //Disable for now cuz no need to add events to db now
 
-        Toast.makeText(getApplicationContext(), "Event has been added", //add to oncomplete listener
+        Toast.makeText(getApplicationContext(), "Event has been edited successfully!",
                 Toast.LENGTH_LONG).show();
 
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent); // After adding it should be viewed in home page
+        onPause();
 
     }
 
