@@ -35,6 +35,8 @@
             android:parentActivityName=".EventView"/>
         <activity android:name=".EditEvent"
             android:parentActivityName=".EventView"></activity>
+        <activity android:name=".AboutActivity"
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>
