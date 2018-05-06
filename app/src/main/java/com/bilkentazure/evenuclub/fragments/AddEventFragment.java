@@ -97,15 +97,6 @@ public class AddEventFragment extends Fragment {
 		selectTo = view.findViewById(R.id.selectTo);
 
 
-		//Initializing the properties, btw they could be empty so before submitting run your checks *IMPORTANT*
-		name = editEventName.getText().toString();
-		ge_point = Integer.parseInt(editGePoints.getText().toString() + "1");
-		location = editLocation.getText().toString();
-		description = editDescription.getText().toString();
-		String unsplitTags = editTags.getText().toString();
-		tags = new ArrayList<>(Arrays.asList(unsplitTags.split(",")));
-
-
 		// Construct SwitchDateTimePicker for the from date
 		fromDateTimeFragment = (SwitchDateTimeDialogFragment) getFragmentManager().findFragmentByTag(TAG_DATETIME_FRAGMENT);
 		if(fromDateTimeFragment == null) {
@@ -228,6 +219,15 @@ public class AddEventFragment extends Fragment {
 			Toast.makeText(getActivity(), "Tags!", Toast.LENGTH_SHORT).show();
 		}
 		else{
+
+			name = editEventName.getText().toString();
+			ge_point = Integer.parseInt(editGePoints.getText().toString());
+			location = editLocation.getText().toString();
+			description = editDescription.getText().toString();
+			String unsplitTags = editTags.getText().toString();
+			tags = new ArrayList<>(Arrays.asList(unsplitTags.split(",")));
+
+
 			DocumentReference ref = db.collection("_events").document();
 			String eventId = ref.getId();
 

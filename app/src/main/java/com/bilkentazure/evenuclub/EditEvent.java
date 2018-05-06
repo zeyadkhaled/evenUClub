@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -215,25 +216,45 @@ public class EditEvent extends AppCompatActivity {
 
     public void editEvent(){
 
-        //Initializing the properties, btw they could be empty so before submitting run your checks *IMPORTANT*
-//        name = editEventName.getText().toString();
-//        ge_point = Integer.parseInt(editEventName.getText().toString());
-//        location = editLocation.getText().toString();
-//        description = editDescription.getText().toString();
-//        String unsplitTags = editTags.getText().toString();
-//        tags = new ArrayList<>(Arrays.asList(unsplitTags.split(",")));
-//
-//        DocumentReference ref = db.collection("_events").document();
-//        String eventId = ref.getId();
+        if(TextUtils.isEmpty(editEventName.getText().toString()) ){
+            Toast.makeText(EditEvent.this, "name!", Toast.LENGTH_SHORT).show();
+        }
+        else if (from == null){
+            Toast.makeText(EditEvent.this, "From!", Toast.LENGTH_SHORT).show();
 
-//        Event event = new Event(eventId,club_id,name,"image_url",description,location,from,to,ge_point,tags,tags,"","","999");
-        //db.collection("_events").document(eventId).set(event); //Disable for now cuz no need to add events to db now
+        }
+        else if (to == null){
+            Toast.makeText(EditEvent.this, "To!", Toast.LENGTH_SHORT).show();
 
-        Toast.makeText(getApplicationContext(), "Event has been edited successfully!",
-                Toast.LENGTH_LONG).show();
+        }
+        else if (TextUtils.isEmpty( editGePoints.getText().toString()) ){
+            Toast.makeText(EditEvent.this, "GE!", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty( editLocation.getText().toString() )){
+            Toast.makeText(EditEvent.this, "Location!", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(editDescription.getText().toString())){
+            Toast.makeText(EditEvent.this, "Description!", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(editTags.getText().toString())){
+            Toast.makeText(EditEvent.this, "Tags!", Toast.LENGTH_SHORT).show();
+        } else {
 
-        onPause();
+            name = editEventName.getText().toString();
+            ge_point = Integer.parseInt(editGePoints.getText().toString());
+            location = editLocation.getText().toString();
+            description = editDescription.getText().toString();
+            String unsplitTags = editTags.getText().toString();
+            tags = new ArrayList<>(Arrays.asList(unsplitTags.split(",")));
 
+            Event updateEvent = new Event(event.getId(),club_id,name,"image_url",description,location,from,to,ge_point,tags,tags,"","","999");
+            db.collection("_events").document(event.getId()).set(updateEvent);
+
+            Toast.makeText(getApplicationContext(), "Event has been edited successfully!",
+                    Toast.LENGTH_LONG).show();
+
+            onPause();
+        }
     }
 
     /**
