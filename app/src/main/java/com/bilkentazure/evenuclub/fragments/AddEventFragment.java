@@ -232,7 +232,7 @@ public class AddEventFragment extends Fragment {
 			String eventId = ref.getId();
 
 			Event event = new Event(eventId,club_id,name,"image_url",description,location,from,to,ge_point,tags,tags,"","","999");
-			//db.collection("_events").document(eventId).set(event); //Disable for now cuz no need to add events to db now
+			db.collection("_events").document(eventId).set(event); //Disable for now cuz no need to add events to db now
 
 			Toast.makeText(getContext(), "Event has been added", //add to oncomplete listener
 					Toast.LENGTH_LONG).show();

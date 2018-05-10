@@ -118,7 +118,7 @@ public class HomeFragment extends Fragment {
 
 
 				//Test Viewing events
-				holder.btnView.setOnClickListener(new View.OnClickListener() {
+				holder.mainRlt.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
 
@@ -161,7 +161,7 @@ public class HomeFragment extends Fragment {
 		private TextView txtLocation;
 		public RelativeLayout mainRlt;
 		private ImageView imgEvent;
-		public FloatingActionButton btnView;
+
 
 
 		public EventHolder (View itemView) {
@@ -174,7 +174,7 @@ public class HomeFragment extends Fragment {
 			txtLocation = mView.findViewById(R.id.event_txt_location);
 			mainRlt = mView.findViewById(R.id.event_list_rlt);
 			imgEvent = mView.findViewById(R.id.event_img_event);
-			btnView = mView.findViewById(R.id.click_event);
+
 		}
 
 		public void setTitle(String title) {
