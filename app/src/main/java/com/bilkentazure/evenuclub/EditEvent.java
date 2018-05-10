@@ -92,7 +92,7 @@ public class EditEvent extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
-        club_id = "from database"; //Retrieve from database somehow using current user credentials
+        club_id = "BIH"; //Retrieve from database somehow using current user credentials
         editEventName = findViewById(R.id.edit_event_edt_eventName);
         editGePoints = findViewById(R.id.edit_event_edt_gePoints);
         editLocation = findViewById(R.id.edit_event_edt_location);
@@ -219,14 +219,14 @@ public class EditEvent extends AppCompatActivity {
         if(TextUtils.isEmpty(editEventName.getText().toString()) ){
             Toast.makeText(EditEvent.this, "name!", Toast.LENGTH_SHORT).show();
         }
-        else if (from == null){
-            Toast.makeText(EditEvent.this, "From!", Toast.LENGTH_SHORT).show();
-
-        }
-        else if (to == null){
-            Toast.makeText(EditEvent.this, "To!", Toast.LENGTH_SHORT).show();
-
-        }
+//        else if (from == null){
+//            Toast.makeText(EditEvent.this, "From!", Toast.LENGTH_SHORT).show();
+//
+//        }
+//        else if (to == null){
+//            Toast.makeText(EditEvent.this, "To!", Toast.LENGTH_SHORT).show();
+//
+//        }
         else if (TextUtils.isEmpty( editGePoints.getText().toString()) ){
             Toast.makeText(EditEvent.this, "GE!", Toast.LENGTH_SHORT).show();
         }

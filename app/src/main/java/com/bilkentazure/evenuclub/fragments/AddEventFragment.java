@@ -82,7 +82,7 @@ public class AddEventFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_addevent, container, false);
 		db = FirebaseFirestore.getInstance();
 
-		club_id = "from database"; //Retrieve from database somehow using current user credentials
+		club_id = "BIH"; //Retrieve from database somehow using current user credentials
 
 		editEventName = view.findViewById(R.id.edt_eventName);
 		editGePoints = view.findViewById(R.id.edt_gePoints);

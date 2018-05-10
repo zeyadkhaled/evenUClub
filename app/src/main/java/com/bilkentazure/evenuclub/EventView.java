@@ -113,7 +113,7 @@ public class EventView extends AppCompatActivity {
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
-                                db.collection("_events").document("zktQuYjZMMo3SabIMeIT").delete();
+                                db.collection("_events").document(event.getId()).delete();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);
                                 Toast.makeText(EventView.this, "Event Deleted!",
