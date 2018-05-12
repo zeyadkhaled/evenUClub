@@ -9,9 +9,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -61,8 +64,8 @@ public class AddEventFragment extends Fragment {
 	private String image;
 	private String description;
 	private String location;
-	private Date from;
-	private Date to;
+	public Date from;
+	public Date to;
 	private int ge_point;
 	private ArrayList<String> tags;
 	private SwitchDateTimeDialogFragment fromDateTimeFragment;
@@ -71,6 +74,10 @@ public class AddEventFragment extends Fragment {
 	private TextView toText;
 	private Button selectFrom;
 	private Button selectTo;
+	private String theTags;
+	private String theDepTags;
+	private Spinner editTargetDepartment;
+	private Spinner editTargetInterests;
 
 
 
@@ -88,7 +95,49 @@ public class AddEventFragment extends Fragment {
 		editGePoints = view.findViewById(R.id.edt_gePoints);
 		editLocation = view.findViewById(R.id.edt_location);
 		editDescription = view.findViewById(R.id.edt_description);
+		editTargetInterests = view.findViewById(R.id.edt_targetInterests);
 		editTags = view.findViewById(R.id.edt_tags);
+		editTargetDepartment = view.findViewById(R.id.edt_target_dep);
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+				R.array.departments, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+		ArrayAdapter<CharSequence> anotherAdapter = ArrayAdapter.createFromResource(getActivity(),
+				R.array.interests, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+		editTargetInterests.setAdapter(anotherAdapter);
+		editTargetDepartment.setAdapter(adapter);
+
+		editTargetDepartment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				theDepTags = parent.getItemAtPosition(position).toString();
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				theDepTags = "";
+
+			}
+		});
+
+		editTargetInterests.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				theTags = parent.getItemAtPosition(position).toString();
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				theTags = "";
+
+			}
+		});
 
 
 		fromText = view.findViewById(R.id.fromTextView);
@@ -215,7 +264,7 @@ public class AddEventFragment extends Fragment {
 		else if (TextUtils.isEmpty(editDescription.getText().toString())){
 			Toast.makeText(getActivity(), "Description!", Toast.LENGTH_SHORT).show();
 		}
-		else if (TextUtils.isEmpty(editTags.getText().toString())){
+		else if (theTags == ""){
 			Toast.makeText(getActivity(), "Tags!", Toast.LENGTH_SHORT).show();
 		}
 		else{

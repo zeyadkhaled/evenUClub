@@ -120,8 +120,8 @@ public class EditEvent extends AppCompatActivity {
         toText.setText(to);
 
 
-//        // Construct SwitchDateTimePicker for the from date
-//        fromDateTimeFragment = (SwitchDateTimeDialogFragment) getFragmentManager().findFragmentByTag(TAG_DATETIME_FRAGMENT);
+//        // Construct SwitchDateTimePicker for the from date//
+// fromDateTimeFragment = (SwitchDateTimeDialogFragment) getFragmentManager().findFragmentByTag(TAG_DATETIME_FRAGMENT);
 //        if(fromDateTimeFragment == null) {
 //            fromDateTimeFragment = SwitchDateTimeDialogFragment.newInstance(
 //                    "Select Date & Time",

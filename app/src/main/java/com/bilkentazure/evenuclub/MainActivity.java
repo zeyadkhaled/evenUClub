@@ -56,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
+//        int index = getIntent().getIntExtra("fragment_index_key", 0); // 0 is default value
+//        viewPager.setCurrentItem(2);
+
         for(int i = 0; i < tabLayout.getTabCount(); i++) {
             tabLayout.getTabAt(i).setIcon(ICONS_OF_TABS[i]);
         }
@@ -112,6 +115,8 @@ public class MainActivity extends AppCompatActivity {
 //        }
 
     }
+
+
 
     private void sendToStart(){
         Intent intent = new Intent(MainActivity.this,StartActivity.class);

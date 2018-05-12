@@ -117,6 +117,17 @@ public class HomeFragment extends Fragment {
 				}
 
 
+				holder.mView.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+
+						Intent intent = new Intent(getContext() , EventView.class);
+						intent.putExtra("event", event);
+						startActivity(intent);
+					}
+				});
+
+
 				//Test Viewing events
 				holder.mainRlt.setOnClickListener(new View.OnClickListener() {
 					@Override
