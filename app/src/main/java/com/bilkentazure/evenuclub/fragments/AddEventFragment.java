@@ -64,8 +64,6 @@ public class AddEventFragment extends Fragment {
 	private String image;
 	private String description;
 	private String location;
-	public Date from;
-	public Date to;
 	private int ge_point;
 	private ArrayList<String> tags;
 	private SwitchDateTimeDialogFragment fromDateTimeFragment;
@@ -78,6 +76,8 @@ public class AddEventFragment extends Fragment {
 	private String theDepTags;
 	private Spinner editTargetDepartment;
 	private Spinner editTargetInterests;
+	public Date from;
+	public  Date to;
 
 
 

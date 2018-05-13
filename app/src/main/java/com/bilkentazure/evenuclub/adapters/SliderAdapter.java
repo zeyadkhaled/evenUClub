@@ -64,6 +64,7 @@ public class SliderAdapter extends PagerAdapter {
 		TextView slideHeading = view.findViewById(R.id.slide_heading);
 		TextView slideDescription = view.findViewById(R.id.slide_description);
 
+
 		slideImage.setImageResource(slide_images[position]);
 		slideHeading.setText(slide_headings[position]);
 		slideDescription.setText(slide_descriptions[position]);

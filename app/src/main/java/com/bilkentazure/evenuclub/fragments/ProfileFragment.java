@@ -11,15 +11,19 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.bilkentazure.evenuclub.MainActivity;
 import com.bilkentazure.evenuclub.ProfileImage;
@@ -28,6 +32,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -36,11 +45,13 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,10 +63,16 @@ public class ProfileFragment extends Fragment {
 	private ImageView profileImage;
 	private TextView myEvents;
 	private StorageReference mStorageRef;
+	private ToggleButton editName;
+	private ToggleButton editEmail;
+	private EditText clubName;
+	private EditText clubEmail;
 
 	private Bitmap imageBmap;
 	private Uri imageUrl;
-	
+	private DatabaseReference db;
+
+
 
 
 	@Override
@@ -65,23 +82,76 @@ public class ProfileFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
 		profileImage = view.findViewById(R.id.profile_image);
+		editEmail = view.findViewById(R.id.chkState2);
+		editName = view.findViewById(R.id.chkState1);
+		clubEmail = view.findViewById(R.id.tvNumber2);
+		clubName = view.findViewById(R.id.tvNumber1);
+
+
+
+		editName.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if (isChecked) {
+					// The toggle is enabled
+					clubName.setEnabled(true);
+					clubName.requestFocus();
+				}
+				else{
+					clubName.setEnabled(false);
+				}
+			}
+		});
+
+
+		editEmail.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if (isChecked) {
+					// The toggle is enabled
+					clubEmail.setEnabled(true);
+					clubEmail.requestFocus();
+				}
+				else{
+					clubEmail.setEnabled(false);
+				}
+			}
+		});
+
+
 
 		mStorageRef = FirebaseStorage.getInstance().getReference("images").child("clubs").child("BIH");
+		db = FirebaseDatabase.getInstance().getReference("images").child("clubs").child("BIH");
 
-		final long ONE_MEGABYTE = 1024 * 1024;
-		mStorageRef.getBytes(ONE_MEGABYTE)
-				.addOnSuccessListener(new OnSuccessListener<byte[]>() {
-					@Override
-					public void onSuccess(byte[] bytes) {
-						Bitmap bm = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-						DisplayMetrics dm = new DisplayMetrics();
-						getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+		db.addValueEventListener(new ValueEventListener() {
+			@Override
+			public void onDataChange(DataSnapshot dataSnapshot) {
+                String url = (String) dataSnapshot.getValue();
 
-						profileImage.setMinimumHeight(dm.heightPixels);
-						profileImage.setMinimumWidth(dm.widthPixels);
-						profileImage.setImageBitmap(bm);
-					}
-				});
+                Picasso.with(getContext()).load( url ).fit().centerCrop().into(profileImage);
+			}
+
+			@Override
+			public void onCancelled(DatabaseError databaseError) {
+				Toast.makeText(getActivity(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+			}
+		});
+
+
+
+
+//		final long ONE_MEGABYTE = 1024 * 1024;
+//		mStorageRef.getBytes(ONE_MEGABYTE)
+//				.addOnSuccessListener(new OnSuccessListener<byte[]>() {
+//					@Override
+//					public void onSuccess(byte[] bytes) {
+//						Bitmap bm = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+//						DisplayMetrics dm = new DisplayMetrics();
+//						getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+//
+//						profileImage.setMinimumHeight(dm.heightPixels);
+//						profileImage.setMinimumWidth(dm.widthPixels);
+//						profileImage.setImageBitmap(bm);
+//					}
+//				});
 
 		profileImage.buildDrawingCache();
 		final Bitmap bmap = profileImage.getDrawingCache();
@@ -181,18 +251,19 @@ public class ProfileFragment extends Fragment {
 			StorageReference fileReference = mStorageRef.child(System.currentTimeMillis() + "." + getFileExtension(imageUrl));
 
 			fileReference.putFile(imageUrl)
-//					.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//						@Override
-//						public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//
-//						}
-//					})
+					.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+						@Override
+						public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+							db.setValue(taskSnapshot.getDownloadUrl().toString());
+						}
+					})
 			.addOnFailureListener(new OnFailureListener() {
 				@Override
 				public void onFailure(@NonNull Exception e) {
 					Toast.makeText(getActivity(), e.getMessage() , Toast.LENGTH_LONG).show();
 				}
 			});
+
 		}
 	}
 

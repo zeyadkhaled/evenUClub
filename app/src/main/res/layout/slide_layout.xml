@@ -23,7 +23,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
 
-            android:fontFamily="sans-serif"
+            android:fontFamily="@font/average"
             android:gravity="left"
             android:text="TextView"
             android:textColor="@color/colorWhite"
@@ -40,11 +40,11 @@
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
 
-            android:fontFamily="sans-serif"
+            android:fontFamily="@font/average"
             android:gravity="left"
             android:text="HEADING"
             android:textColor="@color/colorWhite"
-            android:textSize="40sp"/>
+            android:textSize="30sp"/>
 
         <ImageView
             android:id="@+id/slide_image"

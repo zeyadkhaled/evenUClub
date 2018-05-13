@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/bg_btn_signin_selector"
 
-            android:fontFamily="sans-serif"
+            android:fontFamily="@font/roboto_medium"
             android:paddingBottom="5dp"
             android:paddingEnd="80dp"
             android:paddingStart="80dp"
@@ -82,7 +82,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_weight="1"
 
-                android:fontFamily="serif"
+                android:fontFamily="@font/roboto"
                 android:text="Don't have an account?"
                 android:textColor="@color/colorWhite" />
 
@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
 
-            android:fontFamily="serif"
+            android:fontFamily="@font/roboto"
             android:text="Forgot password?"
             android:textColor="@color/colorWhite" />
 

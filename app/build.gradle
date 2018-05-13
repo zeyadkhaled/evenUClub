@@ -34,6 +34,7 @@ dependencies {
      * EXTERNAL LIBRARIES
      */
     //Firebase
+    implementation 'com.google.firebase:firebase-database:15.0.0'
     implementation 'com.google.firebase:firebase-storage:15.0.0'
     implementation 'com.google.firebase:firebase-auth:15.0.0'
     implementation 'com.google.firebase:firebase-firestore:15.0.0'
@@ -44,6 +45,7 @@ dependencies {
 
 //    //profile page image view
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 
     //Date Time picker
     implementation 'com.github.Kunzisoft:Android-SwitchDateTimePicker:1.9'

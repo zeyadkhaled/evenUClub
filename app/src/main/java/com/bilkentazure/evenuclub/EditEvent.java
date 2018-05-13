@@ -63,8 +63,8 @@ public class EditEvent extends AppCompatActivity {
     private String image;
     private String description;
     private String location;
-    private Date from;
-    private Date to;
+    public Date from;
+    public Date to;
     private int ge_point;
     private ArrayList<String> tags;
     private SwitchDateTimeDialogFragment fromDateTimeFragment;
@@ -120,86 +120,86 @@ public class EditEvent extends AppCompatActivity {
         toText.setText(to);
 
 
-//        // Construct SwitchDateTimePicker for the from date//
-// fromDateTimeFragment = (SwitchDateTimeDialogFragment) getFragmentManager().findFragmentByTag(TAG_DATETIME_FRAGMENT);
-//        if(fromDateTimeFragment == null) {
-//            fromDateTimeFragment = SwitchDateTimeDialogFragment.newInstance(
-//                    "Select Date & Time",
-//                    "Ok",
-//                    "Cancel"
-//            );
-//        }
-//
-//        // Init format
-//        final SimpleDateFormat myDateFormat = new SimpleDateFormat("dd MMM yyyy HH:mm", java.util.Locale.getDefault());
-//        // Assign unmodifiable values
-//        fromDateTimeFragment.set24HoursMode(false);
-//        fromDateTimeFragment.setMinimumDateTime(new GregorianCalendar(2015, Calendar.JANUARY, 1).getTime());
-//        fromDateTimeFragment.setMaximumDateTime(new GregorianCalendar(2025, Calendar.DECEMBER, 31).getTime());
-//
-//        // Define new day and month format
-//        try {
-//            fromDateTimeFragment.setSimpleDateMonthAndDayFormat(new SimpleDateFormat("MMMM dd", Locale.getDefault()));
-//        } catch (SwitchDateTimeDialogFragment.SimpleDateMonthAndDayFormatException e) {
-//            Log.e(TAG, e.getMessage());
-//        }
-//
-//        fromDateTimeFragment.setOnButtonClickListener(new SwitchDateTimeDialogFragment.OnButtonClickListener() {
-//            @Override
-//            public void onPositiveButtonClick(Date date) {
-//                fromText.setText(myDateFormat.format(date));
-//                from = date;
-//            }
-//
-//            @Override
-//            public void onNegativeButtonClick(Date date) {
-//                // Do nothing
-//            }
-//        });
-//
-//        View.OnClickListener from = new FromOnClickListener();
-//        selectFrom.setOnClickListener(from);
-//        fromText.setOnClickListener(from);
-//
-//
-//
-//        // Construct SwitchDateTimePicker for the to date
-//        dateTimeFragment2 = (SwitchDateTimeDialogFragment) getFragmentManager().findFragmentByTag(TAG_DATETIME_FRAGMENT_2);
-//        if(dateTimeFragment2 == null) {
-//            dateTimeFragment2 = SwitchDateTimeDialogFragment.newInstance(
-//                    "Select Date & Time",
-//                    "Ok",
-//                    "Cancel"
-//            );
-//        }
-//
-//
-//        dateTimeFragment2.set24HoursMode(false);
-//
-//        // Define new day and month format
-//        try {
-//            dateTimeFragment2.setSimpleDateMonthAndDayFormat(new SimpleDateFormat("MMMM dd", Locale.getDefault()));
-//        } catch (SwitchDateTimeDialogFragment.SimpleDateMonthAndDayFormatException e) {
-//            Log.e(TAG, e.getMessage());
-//        }
-//
-//        dateTimeFragment2.setOnButtonClickListener(new SwitchDateTimeDialogFragment.OnButtonClickListener() {
-//            @Override
-//            public void onPositiveButtonClick(Date date) {
-//                toText.setText(myDateFormat.format(date));
-//                to = date;
-//            }
-//
-//            @Override
-//            public void onNegativeButtonClick(Date date) {
-//                // Do nothing
-//            }
-//        });
-//
-//
-//        View.OnClickListener to = new ToOnClickListener();
-//        selectTo.setOnClickListener(to);
-//        toText.setOnClickListener(to);
+        // Construct SwitchDateTimePicker for the from date
+        fromDateTimeFragment = (SwitchDateTimeDialogFragment) getSupportFragmentManager().findFragmentByTag(TAG_DATETIME_FRAGMENT);
+        if(fromDateTimeFragment == null) {
+            fromDateTimeFragment = SwitchDateTimeDialogFragment.newInstance(
+                    "Select Date & Time",
+                    "Ok",
+                    "Cancel"
+            );
+        }
+
+        // Init format
+        final SimpleDateFormat myDateFormat = new SimpleDateFormat("dd MMM yyyy HH:mm", java.util.Locale.getDefault());
+        // Assign unmodifiable values
+        fromDateTimeFragment.set24HoursMode(false);
+        fromDateTimeFragment.setMinimumDateTime(new GregorianCalendar(2015, Calendar.JANUARY, 1).getTime());
+        fromDateTimeFragment.setMaximumDateTime(new GregorianCalendar(2025, Calendar.DECEMBER, 31).getTime());
+
+        // Define new day and month format
+        try {
+            fromDateTimeFragment.setSimpleDateMonthAndDayFormat(new SimpleDateFormat("MMMM dd", Locale.getDefault()));
+        } catch (SwitchDateTimeDialogFragment.SimpleDateMonthAndDayFormatException e) {
+            Log.e(TAG, e.getMessage());
+        }
+
+        fromDateTimeFragment.setOnButtonClickListener(new SwitchDateTimeDialogFragment.OnButtonClickListener() {
+            @Override
+            public void onPositiveButtonClick(Date date) {
+                fromText.setText(myDateFormat.format(date));
+                //from = date;
+            }
+
+            @Override
+            public void onNegativeButtonClick(Date date) {
+                // Do nothing
+            }
+        });
+
+        View.OnClickListener fromListener = new FromOnClickListener();
+        selectFrom.setOnClickListener(fromListener);
+        fromText.setOnClickListener(fromListener);
+
+
+
+        // Construct SwitchDateTimePicker for the to date
+        dateTimeFragment2 = (SwitchDateTimeDialogFragment) getSupportFragmentManager().findFragmentByTag(TAG_DATETIME_FRAGMENT_2);
+        if(dateTimeFragment2 == null) {
+            dateTimeFragment2 = SwitchDateTimeDialogFragment.newInstance(
+                    "Select Date & Time",
+                    "Ok",
+                    "Cancel"
+            );
+        }
+
+
+        dateTimeFragment2.set24HoursMode(false);
+
+        // Define new day and month format
+        try {
+            dateTimeFragment2.setSimpleDateMonthAndDayFormat(new SimpleDateFormat("MMMM dd", Locale.getDefault()));
+        } catch (SwitchDateTimeDialogFragment.SimpleDateMonthAndDayFormatException e) {
+            Log.e(TAG, e.getMessage());
+        }
+
+        dateTimeFragment2.setOnButtonClickListener(new SwitchDateTimeDialogFragment.OnButtonClickListener() {
+            @Override
+            public void onPositiveButtonClick(Date date) {
+                toText.setText(myDateFormat.format(date));
+                //to = date;
+            }
+
+            @Override
+            public void onNegativeButtonClick(Date date) {
+                // Do nothing
+            }
+        });
+
+
+        View.OnClickListener toListener = new ToOnClickListener();
+        selectTo.setOnClickListener(toListener);
+        toText.setOnClickListener(toListener);
 
 
         //Before accepting this onClick process the fields to make sure they are filled.
@@ -268,25 +268,25 @@ public class EditEvent extends AppCompatActivity {
     }
 
 
-//    public class ToOnClickListener implements View.OnClickListener{
-//        @Override
-//        public void onClick(View view) {
-//            // Re-init each time
-//            dateTimeFragment2.startAtCalendarView();
-//            dateTimeFragment2.setDefaultDateTime(new GregorianCalendar(2017, Calendar.MARCH, 4, 15, 20).getTime());
-//            dateTimeFragment2.show(getWindowManager(), TAG_DATETIME_FRAGMENT_2);
-//        }
-//    }
-//
-//    public class FromOnClickListener implements View.OnClickListener{
-//        @Override
-//        public void onClick(View view) {
-//            // Re-init each time
-//            fromDateTimeFragment.startAtCalendarView();
-//            fromDateTimeFragment.setDefaultDateTime(new GregorianCalendar(2017, Calendar.MARCH, 4, 15, 20).getTime());
-//            fromDateTimeFragment.show(getFragmentManager(), TAG_DATETIME_FRAGMENT);
-//        }
-//    }
+    public class ToOnClickListener implements View.OnClickListener{
+        @Override
+        public void onClick(View view) {
+            // Re-init each time
+            dateTimeFragment2.startAtCalendarView();
+            dateTimeFragment2.setDefaultDateTime(new GregorianCalendar(2017, Calendar.MARCH, 4, 15, 20).getTime());
+            dateTimeFragment2.show(getSupportFragmentManager(), TAG_DATETIME_FRAGMENT_2);
+        }
+    }
+
+    public class FromOnClickListener implements View.OnClickListener{
+        @Override
+        public void onClick(View view) {
+            // Re-init each time
+            fromDateTimeFragment.startAtCalendarView();
+            fromDateTimeFragment.setDefaultDateTime(new GregorianCalendar(2017, Calendar.MARCH, 4, 15, 20).getTime());
+            fromDateTimeFragment.show(getSupportFragmentManager(), TAG_DATETIME_FRAGMENT);
+        }
+    }
 
 
 }
