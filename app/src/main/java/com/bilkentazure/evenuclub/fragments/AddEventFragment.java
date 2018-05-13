@@ -89,7 +89,7 @@ public class AddEventFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_addevent, container, false);
 		db = FirebaseFirestore.getInstance();
 
-		club_id = "BIH"; //Retrieve from database somehow using current user credentials
+		club_id = "ACM Club"; //Retrieve from database somehow using current user credentials
 
 		editEventName = view.findViewById(R.id.edt_eventName);
 		editGePoints = view.findViewById(R.id.edt_gePoints);
@@ -280,8 +280,9 @@ public class AddEventFragment extends Fragment {
 			DocumentReference ref = db.collection("_events").document();
 			String eventId = ref.getId();
 
-			Event event = new Event(eventId,club_id,name,"image_url",description,location,from,to,ge_point,tags,tags,"","","999");
-			db.collection("_events").document(eventId).set(event); //Disable for now cuz no need to add events to db now
+
+			Event newEvent = new Event(eventId, club_id, name, image, description, location,  from, to,  ge_point,  "", "", "1",  club_id, theDepTags, theTags);
+			db.collection("_events").document(eventId).set(newEvent); //Disable for now cuz no need to add events to db now
 
 			Toast.makeText(getContext(), "Event has been added", //add to oncomplete listener
 					Toast.LENGTH_LONG).show();
