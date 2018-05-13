@@ -112,7 +112,7 @@ public class HomeFragment extends Fragment {
 
 
 
-                if( !( event.getClub_id().equals("BIH") )){
+                if( !( event.getClub_id().equals("ACM Club") )){
 					holder.hide();
 				}
 

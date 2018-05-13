@@ -108,7 +108,7 @@ public class EditEvent extends AppCompatActivity {
         editGePoints.setText(event.getGe_point() +"");
         editLocation.setText(event.getLocation());
         editDescription.setText(event.getDescription());
-        editTags.setText("EMPTY FOR NOW");
+        editTags.setText(event.getTarget_interest());
 
         //Display formatted date
         DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy HH:mm");
@@ -235,19 +235,16 @@ public class EditEvent extends AppCompatActivity {
         }
         else if (TextUtils.isEmpty(editDescription.getText().toString())){
             Toast.makeText(EditEvent.this, "Description!", Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty(editTags.getText().toString())){
-            Toast.makeText(EditEvent.this, "Tags!", Toast.LENGTH_SHORT).show();
         } else {
 
             name = editEventName.getText().toString();
             ge_point = Integer.parseInt(editGePoints.getText().toString());
             location = editLocation.getText().toString();
             description = editDescription.getText().toString();
-            String unsplitTags = editTags.getText().toString();
-            tags = new ArrayList<>(Arrays.asList(unsplitTags.split(",")));
+//            String unsplitTags = editTags.getText().toString();
+//            tags = new ArrayList<>(Arrays.asList(unsplitTags.split(",")));
 
-            Event updateEvent = new Event(event.getId(),club_id,name,"image_url",description,location,from,to,ge_point,tags,tags,"","","999");
+            Event updateEvent = new Event(event.getId(), event.getClub_id(), name, image, description, location,  event.getFrom(), event.getTo(),  ge_point,  "", "", "1", event.getClub_id(), event.getTarget_department(), event.getTarget_interest());
             db.collection("_events").document(event.getId()).set(updateEvent);
 
             Toast.makeText(getApplicationContext(), "Event has been edited successfully!",
