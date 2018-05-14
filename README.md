@@ -1,5 +1,5 @@
 # evenUClub
-This application is the complementing application to evenU CS102 project.  https://github.com/AzizUtku/evenU
+This application is the complementing application to evenU CS102 project 
 
 ## Usages of the application
 -Adding Events 
