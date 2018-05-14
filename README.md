@@ -2,12 +2,12 @@
 This application is the complementing application to evenU CS102 project 
 
 ## Usages of the application
--Adding Events 
--Editing Events
--Deleting Events
--Generating QR with Security Code
--Generating Attendees' list
--Manage club's information
+* Adding Events 
+* Editing Events
+* Deleting Events
+* Generating QR with Security Code
+* Generating Attendees' list
+* Manage club's information
 
 ## Authors
 * **Zeyad Abuamer** - *Event Related Processes* - [Zeyad Abuamer](https://github.com/zeyadkhaled)
