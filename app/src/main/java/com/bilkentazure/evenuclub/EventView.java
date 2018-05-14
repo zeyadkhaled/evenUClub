@@ -163,7 +163,7 @@ public class EventView extends AppCompatActivity {
         excelData = headerData + "\n";
 
         //Query DB for attendees sub collection
-        db.collection("_events").document(eventID).collection("attendees").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("_events").document(event.getId()).collection("attendees").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
@@ -195,7 +195,7 @@ public class EventView extends AppCompatActivity {
                         if ( root.canWrite()){
                             File dir    =   new File (root.getAbsolutePath() + "/EventAttendees");
                             dir.mkdirs();
-                            file   =   new File(dir, "event name here" + ".csv");
+                            file   =   new File(dir, event.getName() + ".csv");
                             FileOutputStream out   =   null;
                             try {
                                 out = new FileOutputStream(file);

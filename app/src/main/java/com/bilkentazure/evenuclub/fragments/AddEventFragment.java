@@ -96,7 +96,7 @@ public class AddEventFragment extends Fragment {
 		editLocation = view.findViewById(R.id.edt_location);
 		editDescription = view.findViewById(R.id.edt_description);
 		editTargetInterests = view.findViewById(R.id.edt_targetInterests);
-		editTags = view.findViewById(R.id.edt_tags);
+//		editTags = view.findViewById(R.id.edt_tags);
 		editTargetDepartment = view.findViewById(R.id.edt_target_dep);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -264,17 +264,17 @@ public class AddEventFragment extends Fragment {
 		else if (TextUtils.isEmpty(editDescription.getText().toString())){
 			Toast.makeText(getActivity(), "Description!", Toast.LENGTH_SHORT).show();
 		}
-		else if (theTags == ""){
-			Toast.makeText(getActivity(), "Tags!", Toast.LENGTH_SHORT).show();
-		}
+//		else if (theTags == ""){
+//			Toast.makeText(getActivity(), "Tags!", Toast.LENGTH_SHORT).show();
+//		}
 		else{
 
 			name = editEventName.getText().toString();
 			ge_point = Integer.parseInt(editGePoints.getText().toString());
 			location = editLocation.getText().toString();
 			description = editDescription.getText().toString();
-			String unsplitTags = editTags.getText().toString();
-			tags = new ArrayList<>(Arrays.asList(unsplitTags.split(",")));
+//			String unsplitTags = editTags.getText().toString();
+//			tags = new ArrayList<>(Arrays.asList(unsplitTags.split(",")));
 
 
 			DocumentReference ref = db.collection("_events").document();

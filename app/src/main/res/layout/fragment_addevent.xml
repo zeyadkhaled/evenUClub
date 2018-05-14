@@ -210,19 +210,19 @@
                     android:background="@android:drawable/btn_dropdown"
                     android:spinnerMode="dropdown"/>
 
-                <com.rengwuxian.materialedittext.MaterialEditText
-                    android:id="@+id/edt_tags"
-                    android:layout_marginTop="10dp"
-                    android:hint="KeyWords"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:selectAllOnFocus="true"
-                    android:textSize="16sp"
-                    app:met_floatingLabel="highlight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <requestFocus/>
-                </com.rengwuxian.materialedittext.MaterialEditText>
+                <!--<com.rengwuxian.materialedittext.MaterialEditText-->
+                    <!--android:id="@+id/edt_tags"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:hint="KeyWords"-->
+                    <!--android:ems="10"-->
+                    <!--android:inputType="text"-->
+                    <!--android:selectAllOnFocus="true"-->
+                    <!--android:textSize="16sp"-->
+                    <!--app:met_floatingLabel="highlight"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content">-->
+                    <!--<requestFocus/>-->
+                <!--</com.rengwuxian.materialedittext.MaterialEditText>-->
 
 
             </LinearLayout>

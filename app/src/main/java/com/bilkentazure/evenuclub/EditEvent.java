@@ -214,6 +214,9 @@ public class EditEvent extends AppCompatActivity {
 
     }
 
+    /**
+     * Retrieve data from event object and allow user to edit them
+     */
     public void editEvent(){
 
         if(TextUtils.isEmpty(editEventName.getText().toString()) ){
